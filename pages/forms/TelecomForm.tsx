@@ -5,6 +5,7 @@ import { Toggle } from '../../components/InputFields';
 import { Save, Signal, ArrowLeft, Globe, User, Users, MapPin, Calendar, FileText, Plus, Trash2, Smartphone, Wifi, RotateCcw, Send } from 'lucide-react';
 import { useData } from '../../contexts/DataContext';
 import { TelecomRecord } from '../../types';
+import { useLayout } from '../../contexts/LayoutContext';
 
 interface TelecomFormProps {
     onBack: () => void;
@@ -12,6 +13,7 @@ interface TelecomFormProps {
 
 export const TelecomForm: React.FC<TelecomFormProps> = ({ onBack }) => {
   const { telecomData, setTelecomData } = useData();
+  const { sidebarOpen } = useLayout();
 
   // Identity State matching PDF Page 14
   const [respondentName, setRespondentName] = useState(''); 
@@ -164,7 +166,7 @@ export const TelecomForm: React.FC<TelecomFormProps> = ({ onBack }) => {
       </div>
       {/* FLOATING ACTION BAR */}
       {createPortal(
-        <div className="fixed bottom-4 md:bottom-6 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:min-w-[400px] z-20 bg-white/90 backdrop-blur-xl border border-gray-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-full p-1.5 md:p-2 flex items-center justify-between md:justify-center gap-2 md:gap-4 transition-all duration-300 animate-in fade-in slide-in-from-bottom-4">
+        <div className={`fixed bottom-8 md:bottom-10 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:min-w-[400px] z-20 bg-white/90 backdrop-blur-xl border border-gray-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-full p-1.5 md:p-2 flex items-center justify-between md:justify-center gap-2 md:gap-4 transition-all duration-300 animate-in fade-in slide-in-from-bottom-4 ${sidebarOpen ? 'blur-sm pointer-events-none opacity-50' : ''}`}>
             <button 
                 onClick={handleReset}
                 className="group flex items-center justify-center gap-2 px-3 py-2.5 md:px-4 md:py-3 rounded-full text-[10px] md:text-sm font-bold text-red-600 bg-red-50/50 border border-red-100 hover:bg-red-100 transition-all duration-300 shadow-sm hover:shadow-md active:scale-95 flex-1 md:flex-none"

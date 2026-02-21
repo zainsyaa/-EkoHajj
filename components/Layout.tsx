@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Sidebar } from './Sidebar';
 import { User, Bell, AlignLeft } from 'lucide-react';
 import { Page } from '../types';
+import { LayoutProvider } from '../contexts/LayoutContext';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,6 +15,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentPage, onNavigat
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
+    <LayoutProvider value={{ sidebarOpen, setSidebarOpen }}>
     <div className="min-h-screen bg-[#F0F4F8] text-[#333333] font-sans overflow-x-hidden relative selection:bg-[#D4AF37]/30">
       
       {/* Ambient Background Elements for Glassmorphism */}
@@ -102,5 +104,6 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentPage, onNavigat
         </footer>
       </div>
     </div>
+    </LayoutProvider>
   );
 };
