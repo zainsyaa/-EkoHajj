@@ -16,7 +16,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentPage, onNavigat
 
   return (
     <LayoutProvider value={{ sidebarOpen, setSidebarOpen }}>
-    <div className="min-h-screen bg-[#F0F4F8] text-[#333333] font-sans overflow-x-hidden relative selection:bg-[#D4AF37]/30">
+    <div className="min-h-screen bg-[#F0F4F8] text-[#333333] font-sans relative selection:bg-[#D4AF37]/30">
       
       {/* Ambient Background Elements for Glassmorphism */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
@@ -87,7 +87,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentPage, onNavigat
         </header>
 
         {/* Content Area */}
-        <main className="p-4 md:p-8 flex-1 relative overflow-x-hidden">
+        <main className="p-4 md:p-8 flex-1 relative">
            {children}
         </main>
         

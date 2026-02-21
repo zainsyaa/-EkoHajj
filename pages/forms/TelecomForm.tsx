@@ -74,7 +74,7 @@ export const TelecomForm: React.FC<TelecomFormProps> = ({ onBack }) => {
   const THEME_COLOR = '#7C3AED';
 
   return (
-    <div className="flex flex-col relative font-sans bg-white/60 backdrop-blur-xl rounded-[1.5rem] md:rounded-[2.5rem] border border-white/60 shadow-2xl transition-all duration-500 pb-4">
+    <div className="flex flex-col relative font-sans bg-white/60 backdrop-blur-xl rounded-[1.5rem] md:rounded-[2.5rem] border border-white/60 shadow-2xl pb-24">
       <div className="relative z-20 bg-white/40 backdrop-blur-lg border-b border-white/50 px-4 py-4 md:px-8 md:py-6 rounded-t-[1.5rem] md:rounded-t-[2.5rem] overflow-hidden">
          {/* Watermark */}
          <div className="absolute top-[-20%] right-[-5%] text-[#7C3AED] opacity-5 pointer-events-none transform rotate-12 scale-100 md:scale-150">
@@ -166,7 +166,7 @@ export const TelecomForm: React.FC<TelecomFormProps> = ({ onBack }) => {
       </div>
       
       {/* STICKY ACTION BAR */}
-      <div className={`sticky bottom-4 md:bottom-6 z-30 flex justify-center w-full px-4 pb-4 transition-all duration-300 ${sidebarOpen ? 'blur-sm pointer-events-none opacity-50' : ''}`}>
+      <div className={`sticky bottom-4 md:bottom-6 z-50 flex justify-center w-full px-4 pb-4 ${sidebarOpen ? 'blur-sm pointer-events-none opacity-50' : ''}`}>
         <div className="bg-white/90 backdrop-blur-xl border border-gray-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-full p-1.5 md:p-2 flex items-center justify-between md:justify-center gap-2 md:gap-4 w-full md:w-auto md:min-w-[400px]">
             <button 
                 onClick={handleReset}
