@@ -77,8 +77,8 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
                                 type="text" 
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                placeholder="Masukkan Username / ID Panitia"
-                                className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3.5 pl-11 pr-4 text-base md:text-sm font-semibold text-gray-800 placeholder-gray-400 focus:bg-white focus:border-[#064E3B] focus:ring-4 focus:ring-[#064E3B]/10 outline-none transition-all"
+                                placeholder="Username / ID Panitia"
+                                className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-sm md:text-sm font-semibold text-gray-800 placeholder-gray-400 focus:bg-white focus:border-[#064E3B] focus:ring-4 focus:ring-[#064E3B]/10 outline-none transition-all"
                             />
                         </div>
                     </div>
@@ -93,8 +93,8 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
                                 type={showPassword ? "text" : "password"}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                placeholder="••••••••"
-                                className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3.5 pl-11 pr-12 text-base md:text-sm font-semibold text-gray-800 placeholder-gray-400 focus:bg-white focus:border-[#064E3B] focus:ring-4 focus:ring-[#064E3B]/10 outline-none transition-all"
+                                placeholder="Password"
+                                className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 pl-10 pr-10 text-sm md:text-sm font-semibold text-gray-800 placeholder-gray-400 focus:bg-white focus:border-[#064E3B] focus:ring-4 focus:ring-[#064E3B]/10 outline-none transition-all"
                             />
                             <button 
                                 type="button"
