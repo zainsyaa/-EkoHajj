@@ -29,6 +29,14 @@ export const Visualization: React.FC = () => {
         };
     }, []);
 
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const [activeIndex, setActiveIndex] = useState(0);
 
     const onPieEnter = (_: any, index: number) => {
@@ -209,6 +217,44 @@ export const Visualization: React.FC = () => {
         return null;
     };
 
+    const renderCustomTick = (props: any) => {
+        const { payload, x, y, textAnchor, stroke, radius } = props;
+        const words = payload.value.split(' ');
+        let line1 = payload.value;
+        let line2 = '';
+
+        if (words.length > 1 && (payload.value.length > 10 || isMobile)) {
+             const mid = Math.ceil(words.length / 2);
+             line1 = words.slice(0, mid).join(' ');
+             line2 = words.slice(mid).join(' ');
+        }
+
+        return (
+            <g className="recharts-layer recharts-polar-angle-axis-tick">
+                <text
+                    radius={radius}
+                    stroke={stroke}
+                    x={x}
+                    y={y}
+                    className="recharts-text recharts-polar-angle-axis-tick-value"
+                    textAnchor={textAnchor}
+                    fill="#4B5563"
+                    fontSize={isMobile ? 10 : 12}
+                    fontWeight="bold"
+                >
+                    {line2 ? (
+                        <>
+                            <tspan x={x} dy={-4}>{line1}</tspan>
+                            <tspan x={x} dy={12}>{line2}</tspan>
+                        </>
+                    ) : (
+                        <tspan x={x} dy="0.3em">{line1}</tspan>
+                    )}
+                </text>
+            </g>
+        );
+    };
+
     return (
         <div className="space-y-8 animate-fade-in-up pb-10">
             {/* HERO SECTION */}
@@ -376,14 +422,14 @@ export const Visualization: React.FC = () => {
                                                 onMouseEnter={() => setActiveIndex(index)}
                                             >
                                                 <div className="flex items-center gap-1.5 mb-1">
-                                                    <div className="w-2 h-2 rounded-full flex-shrink-0 shadow-sm" style={{ backgroundColor: entry.color }}></div>
-                                                    <span className={`text-[10px] font-bold truncate leading-tight ${activeIndex === index ? 'text-blue-900' : 'text-gray-700'}`}>
+                                                    <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full flex-shrink-0 shadow-sm" style={{ backgroundColor: entry.color }}></div>
+                                                    <span className={`text-xs md:text-sm font-bold truncate leading-tight ${activeIndex === index ? 'text-blue-900' : 'text-gray-700'}`}>
                                                         {entry.name}
                                                     </span>
                                                 </div>
                                                 <div className="flex items-center justify-between">
-                                                    <span className="text-[9px] text-gray-400 font-medium">{Math.floor(entry.value).toLocaleString()}</span>
-                                                    <span className={`text-[10px] font-bold ${activeIndex === index ? 'text-blue-700' : 'text-gray-900'}`}>
+                                                    <span className="text-[10px] md:text-xs text-gray-400 font-medium">{Math.floor(entry.value).toLocaleString()}</span>
+                                                    <span className={`text-xs md:text-sm font-bold ${activeIndex === index ? 'text-blue-700' : 'text-gray-900'}`}>
                                                         {((entry.value / dataTelcoShare.reduce((a, b) => a + b.value, 0)) * 100).toFixed(1)}%
                                                     </span>
                                                 </div>
@@ -447,7 +493,7 @@ export const Visualization: React.FC = () => {
                     <div className="h-[350px] md:h-[400px] mt-6">
                         {isLoading ? <PieSkeleton /> : (
                             <ResponsiveContainer width="100%" height="100%">
-                                <RadarChart cx="50%" cy="50%" outerRadius="85%" data={dataHotelRevenue}>
+                                <RadarChart cx="50%" cy="50%" outerRadius={isMobile ? "68%" : "85%"} data={dataHotelRevenue}>
                                     <defs>
                                         <radialGradient id="gradRadarRevenue" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
                                             <stop offset="0%" stopColor={COLORS.secondary} stopOpacity={0.1}/>
@@ -457,9 +503,7 @@ export const Visualization: React.FC = () => {
                                     <PolarGrid stroke="#E5E7EB" strokeDasharray="4 4" />
                                     <PolarAngleAxis 
                                         dataKey="subject" 
-                                        fontSize={12} 
-                                        tick={{ fill: '#4B5563', fontWeight: 'bold' }} 
-                                        tickFormatter={(val) => val.length > 20 ? `${val.substring(0, 20)}...` : val}
+                                        tick={renderCustomTick}
                                     />
                                     <PolarRadiusAxis angle={30} stroke="none" />
                                     
