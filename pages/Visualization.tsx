@@ -1,5 +1,5 @@
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useRef, useEffect } from 'react';
 import { GlassCard } from '../components/GlassCard';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, PieChart, Pie, Cell, Legend, AreaChart, Area, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ReferenceLine, Sector } from 'recharts';
 import { useData } from '../contexts/DataContext';
@@ -14,6 +14,20 @@ export const Visualization: React.FC = () => {
     // Filter State: Time based
     const [timeFilter, setTimeFilter] = useState<'all' | 'today' | 'week' | 'month'>('all');
     const [isFilterOpen, setIsFilterOpen] = useState(false);
+    const filterRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (filterRef.current && !filterRef.current.contains(event.target as Node)) {
+                setIsFilterOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -205,7 +219,7 @@ export const Visualization: React.FC = () => {
             >
                 <div className="flex flex-row items-center gap-2 w-full sm:w-auto">
                     {/* Time Filter Toggle */}
-                    <div className="relative flex-1 sm:flex-none">
+                    <div className="relative flex-1 sm:flex-none" ref={filterRef}>
                         <button 
                             onClick={() => setIsFilterOpen(!isFilterOpen)}
                             className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-2 rounded-xl border border-white/20 text-white font-bold text-[10px] hover:bg-white/20 transition-all w-full sm:min-w-[140px] justify-between shadow-lg shadow-black/5"
