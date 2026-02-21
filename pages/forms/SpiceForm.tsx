@@ -107,10 +107,10 @@ export const SpiceForm: React.FC<SpiceFormProps> = ({ onBack }) => {
   const THEME_GRADIENT_TO = '#042f24';
 
   return (
-    <div className="flex flex-col relative font-sans bg-white/60 backdrop-blur-xl rounded-[1.5rem] md:rounded-[2.5rem] border border-white/60 shadow-2xl overflow-hidden transition-all duration-500 pb-32">
+    <div className="flex flex-col relative font-sans bg-white/60 backdrop-blur-xl rounded-[1.5rem] md:rounded-[2.5rem] border border-white/60 shadow-2xl transition-all duration-500 pb-4">
       
       {/* HEADER */}
-      <div className="relative z-20 bg-white/40 backdrop-blur-lg border-b border-white/50 overflow-hidden">
+      <div className="relative z-20 bg-white/40 backdrop-blur-lg border-b border-white/50 rounded-t-[1.5rem] md:rounded-t-[2.5rem] overflow-hidden">
           {/* Watermark Icon */}
           <div className="absolute top-[-20%] right-[-5%] text-[#064E3B] opacity-5 pointer-events-none transform rotate-12 scale-100 md:scale-150">
               <ChefHat size={300} strokeWidth={0.5} />
@@ -323,9 +323,10 @@ export const SpiceForm: React.FC<SpiceFormProps> = ({ onBack }) => {
                </div>
           </div>
       </div>
-      {/* FLOATING ACTION BAR */}
-      {createPortal(
-        <div className={`fixed bottom-8 md:bottom-10 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:min-w-[400px] z-20 bg-white/90 backdrop-blur-xl border border-gray-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-full p-1.5 md:p-2 flex items-center justify-between md:justify-center gap-2 md:gap-4 transition-all duration-300 animate-in fade-in slide-in-from-bottom-4 ${sidebarOpen ? 'blur-sm pointer-events-none opacity-50' : ''}`}>
+      
+      {/* STICKY ACTION BAR */}
+      <div className={`sticky bottom-4 md:bottom-6 z-30 flex justify-center w-full px-4 pb-4 transition-all duration-300 ${sidebarOpen ? 'blur-sm pointer-events-none opacity-50' : ''}`}>
+        <div className="bg-white/90 backdrop-blur-xl border border-gray-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-full p-1.5 md:p-2 flex items-center justify-between md:justify-center gap-2 md:gap-4 w-full md:w-auto md:min-w-[400px]">
             <button 
                 onClick={handleReset}
                 className="group flex items-center justify-center gap-2 px-3 py-2.5 md:px-4 md:py-3 rounded-full text-[10px] md:text-sm font-bold text-red-600 bg-red-50/50 border border-red-100 hover:bg-red-100 transition-all duration-300 shadow-sm hover:shadow-md active:scale-95 flex-1 md:flex-none"
@@ -349,9 +350,8 @@ export const SpiceForm: React.FC<SpiceFormProps> = ({ onBack }) => {
                 <Send className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /> 
                 <span>Submit Laporan</span>
             </button>
-        </div>,
-        document.body
-      )}
+        </div>
+      </div>
     </div>
   );
 };
