@@ -2,39 +2,44 @@
 import React, { useMemo, useState } from 'react';
 import { GlassCard } from '../components/GlassCard';
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid, BarChart, Bar, Cell, PieChart, Pie, Legend, LineChart, Line, ComposedChart, ReferenceLine, Sector } from 'recharts';
-import { TrendingUp, Activity, Package, Truck, Signal, Calendar, MapPin, ChefHat, UtensilsCrossed, Store, ArrowRight, Wallet, BarChart3, PieChart as PieIcon, History, Filter, ChevronDown, Clock, Check, ShoppingCart, Smartphone } from 'lucide-react';
+import { TrendingUp, Activity, Package, Truck, Signal, Calendar, MapPin, ChefHat, UtensilsCrossed, Store, ArrowRight, Wallet, BarChart3, PieChart as PieIcon, History, Filter, ChevronDown, ChevronRight, Clock, Check, ShoppingCart, Smartphone } from 'lucide-react';
 import { useData } from '../contexts/DataContext';
 import { ChartSkeleton, ListSkeleton, PieSkeleton, StatCardSkeleton } from '../components/Skeletons';
 import { HeroSection } from '../components/HeroSection';
 
 const StatCard = ({ title, value, icon: Icon, color, trend, footer }: any) => (
-  <div className="relative overflow-hidden rounded-2xl md:rounded-3xl p-4 md:p-6 border border-white/60 bg-white/60 backdrop-blur-sm shadow-sm hover:shadow-lg transition-all group min-h-[120px] md:min-h-[140px] flex flex-col justify-between">
+  <div className="relative overflow-hidden rounded-3xl p-5 md:p-6 border border-white/60 bg-white/60 backdrop-blur-sm shadow-sm hover:shadow-lg transition-all group min-h-[160px] flex flex-col justify-between active:scale-98 cursor-default">
     <div className={`absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none`} style={{ color: color }}>
-        <Icon size={60} className="w-16 h-16 md:w-24 md:h-24" />
+        <Icon size={80} className="w-20 h-20 md:w-24 md:h-24" />
     </div>
     
     {/* Header Section */}
     <div className="flex justify-between items-start relative z-10">
-        <div className={`p-2 md:p-3 rounded-xl md:rounded-2xl text-white shadow-md flex items-center justify-center group-hover:scale-105 transition-transform duration-300`} style={{ backgroundColor: color }}>
-            <Icon size={16} strokeWidth={2} className="md:w-6 md:h-6" />
+        <div className={`p-2.5 md:p-3 rounded-2xl text-white shadow-md flex items-center justify-center group-hover:scale-105 transition-transform duration-300`} style={{ backgroundColor: color }}>
+            <Icon size={20} strokeWidth={2} className="md:w-6 md:h-6" />
         </div>
         {trend && (
-            <span className="flex items-center text-[9px] md:text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 md:px-2 md:py-1 rounded-full border border-emerald-100">
-                <TrendingUp size={10} className="mr-1 md:w-3 md:h-3" /> {trend}
+            <span className="flex items-center text-[10px] md:text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full border border-emerald-100">
+                <TrendingUp size={12} className="mr-1" /> {trend}
             </span>
         )}
     </div>
 
     {/* Content Section */}
-    <div className="relative z-10 mt-2 md:mt-0">
-        <h3 className="text-lg md:text-3xl font-bold text-gray-800 font-playfair leading-none mb-0.5 md:mb-1">{value}</h3>
-        <p className="text-[9px] md:text-xs font-bold text-gray-400 uppercase tracking-widest truncate">{title}</p>
+    <div className="relative z-10 mt-3 md:mt-2">
+        <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest block mb-1" style={{ color: color }}>{title}</span>
+        <h3 className="text-2xl md:text-3xl font-bold text-gray-800 group-hover:text-[#064E3B] transition-colors font-playfair leading-tight mb-1">{value}</h3>
         
         {footer && (
-             <div className="mt-2 pt-2 border-t border-gray-200/50 flex items-center gap-2 text-[9px] md:text-xs text-gray-400 font-medium truncate opacity-80">
+             <div className="text-[10px] md:text-xs text-gray-500 font-medium leading-relaxed line-clamp-2 w-[90%] opacity-80">
                 {footer}
              </div>
         )}
+    </div>
+
+    {/* Hover Arrow */}
+    <div className="absolute bottom-5 right-5 w-6 h-6 bg-white rounded-full shadow-md flex items-center justify-center text-[#064E3B] opacity-0 group-hover:opacity-100 group-hover:translate-x-0 translate-x-2 transition-all duration-300 z-20 hidden md:flex">
+        <ChevronRight size={12} />
     </div>
   </div>
 );
@@ -315,14 +320,15 @@ export const Dashboard: React.FC<DashboardProps> = ({ statusFilter, onStatusFilt
   };
 
   return (
-    <div className="space-y-4 md:space-y-6 pb-20 md:pb-10 animate-fade-in-up font-sans">
+    <div className="space-y-6 pb-10 animate-fade-in-up font-sans">
       
       {/* 1. HERO SECTION */}
       <HeroSection 
         title={<span>Ringkasan <span className="text-[#D4AF37]">Ekosistem 2026</span></span>}
         subtitle="Executive Summary realisasi layanan konsumsi, potensi ekonomi, dan logistik haji (Sinkronisasi Data Real-time)."
         currentDate={currentDate}
-        className="mx-4 md:mx-0"
+        statusFilter={statusFilter}
+        onStatusFilterChange={onStatusFilterChange}
       >
             <div className="flex flex-row items-center gap-2 w-full sm:w-auto">
                 <div className="relative flex-1 sm:flex-none">
@@ -382,7 +388,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ statusFilter, onStatusFilt
       </HeroSection>
 
       {/* 2. KPI CARDS - 3 Columns for 6 items */}
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 px-4 md:px-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {isLoading ? (
             <>
                 <StatCardSkeleton />
@@ -447,7 +453,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ statusFilter, onStatusFilt
       </div>
 
       {/* 3. MAIN CONTENT GRID */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 px-4 md:px-0">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* ROW 1: IPEHU (FULL WIDTH) */}
           <div className="lg:col-span-3">
