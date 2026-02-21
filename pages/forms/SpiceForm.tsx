@@ -238,64 +238,64 @@ export const SpiceForm: React.FC<SpiceFormProps> = ({ onBack }) => {
             {filteredRecords.map((record, idx) => (
                 <div 
                     key={record.id} 
-                    className="relative bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all group"
+                    className="relative bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all group"
                 >
-                   <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#D4AF37] rounded-l-3xl"></div>
+                   <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#D4AF37] rounded-l-2xl md:rounded-l-3xl"></div>
 
-                   <div className="flex justify-between items-center mb-6 pl-2">
-                       <div className="flex items-center gap-4">
-                           <div className="px-2.5 py-1.5 rounded-lg bg-[#064E3B]/10 text-[#064E3B] text-xs font-bold">
+                   <div className="flex justify-between items-center mb-4 md:mb-6 pl-2">
+                       <div className="flex items-center gap-3 md:gap-4">
+                           <div className="px-2 py-1 md:px-2.5 md:py-1.5 rounded-lg bg-[#064E3B]/10 text-[#064E3B] text-[10px] md:text-xs font-bold">
                                {idx + 1}
                            </div>
-                           <h3 className="text-sm font-bold text-[#064E3B] uppercase tracking-tight">{record.name}</h3>
+                           <h3 className="text-xs md:text-sm font-bold text-[#064E3B] uppercase tracking-tight">{record.name}</h3>
                        </div>
-                       <div className="mr-8">
+                       <div className="mr-4 md:mr-8">
                             <Toggle checked={record.isUsed} onChange={(val) => handleRecordChange(record.id, 'isUsed', val)} label="Tersedia" />
                        </div>
                    </div>
 
-                   <div className={`space-y-6 transition-all duration-500 ease-in-out ${record.isUsed ? 'max-h-[800px] opacity-100 mt-2' : 'max-h-0 opacity-0 overflow-hidden mt-0'}`}>
+                   <div className={`space-y-4 md:space-y-6 transition-all duration-500 ease-in-out ${record.isUsed ? 'max-h-[800px] opacity-100 mt-2' : 'max-h-0 opacity-0 overflow-hidden mt-0'}`}>
                        
                        <div className="space-y-1.5 pb-4 border-b border-dashed border-gray-200">
-                           <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1.5"><Building2 size={12} className="text-[#064E3B]"/> Perusahaan Penyedia</label>
+                           <label className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1.5"><Building2 size={12} className="text-[#064E3B]"/> Perusahaan Penyedia</label>
                            <div className="relative group/input">
                                <input type="text" value={record.companyName || ''} onChange={(e) => handleRecordChange(record.id, 'companyName', toTitleCase(e.target.value))} 
-                                      className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl text-sm font-semibold text-gray-800 focus:bg-white focus:border-[#064E3B] focus:ring-4 focus:ring-[#064E3B]/5 outline-none transition-all placeholder:font-normal placeholder:text-gray-300" placeholder="Nama Perusahaan / Suplier..." />
+                                      className="w-full px-3 py-2.5 md:px-4 md:py-3 bg-gray-50/50 border border-gray-200 rounded-lg md:rounded-xl text-xs md:text-sm font-semibold text-gray-800 focus:bg-white focus:border-[#064E3B] focus:ring-4 focus:ring-[#064E3B]/5 outline-none transition-all placeholder:font-normal placeholder:text-gray-300" placeholder="Nama Perusahaan / Suplier..." />
                            </div>
                        </div>
 
-                       <div className="grid grid-cols-2 gap-5">
+                       <div className="grid grid-cols-2 gap-3 md:gap-5">
                            <div className="space-y-1.5">
-                               <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1.5"><Package size={12} className="text-[#D4AF37]"/> Volume/Ton</label>
+                               <label className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1.5"><Package size={12} className="text-[#D4AF37]"/> Volume/Ton</label>
                                <div className="relative group/input">
                                    <input type="number" value={record.volume} onChange={(e) => handleRecordChange(record.id, 'volume', e.target.value)} 
-                                          className="w-full pl-3 pr-3 py-3 bg-gray-50/50 border border-gray-200 rounded-xl text-sm font-bold text-gray-700 focus:bg-white focus:border-[#064E3B] focus:ring-4 focus:ring-[#064E3B]/5 outline-none transition-all placeholder:font-normal placeholder:text-gray-300" placeholder="0.00" />
+                                          className="w-full px-3 py-2.5 md:px-3 md:py-3 bg-gray-50/50 border border-gray-200 rounded-lg md:rounded-xl text-xs md:text-sm font-bold text-gray-700 focus:bg-white focus:border-[#064E3B] focus:ring-4 focus:ring-[#064E3B]/5 outline-none transition-all placeholder:font-normal placeholder:text-gray-300" placeholder="0.00" />
                                </div>
                            </div>
                            <div className="space-y-1.5">
-                               <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1.5"><DollarSign size={12} className="text-[#D4AF37]"/> Harga</label>
+                               <label className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1.5"><DollarSign size={12} className="text-[#D4AF37]"/> Harga</label>
                                <div className="relative group/input">
-                                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-400">SAR</span>
+                                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] md:text-xs font-bold text-gray-400">SAR</span>
                                    <input type="number" value={record.price} onChange={(e) => handleRecordChange(record.id, 'price', e.target.value)} 
-                                          className="w-full pl-10 pr-3 py-3 bg-gray-50/50 border border-gray-200 rounded-xl text-sm font-bold text-[#064E3B] focus:bg-white focus:border-[#064E3B] focus:ring-4 focus:ring-[#064E3B]/10 outline-none transition-all placeholder:font-normal placeholder:text-gray-300" placeholder="0" />
+                                          className="w-full pl-9 md:pl-10 pr-3 py-2.5 md:py-3 bg-gray-50/50 border border-gray-200 rounded-lg md:rounded-xl text-xs md:text-sm font-bold text-[#064E3B] focus:bg-white focus:border-[#064E3B] focus:ring-4 focus:ring-[#064E3B]/10 outline-none transition-all placeholder:font-normal placeholder:text-gray-300" placeholder="0" />
                                </div>
                            </div>
                        </div>
                        
                        <div className="space-y-1.5">
-                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1.5"><ClipboardList size={12} className="text-gray-400"/> Bahan Lain</label>
+                            <label className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1.5"><ClipboardList size={12} className="text-gray-400"/> Bahan Lain</label>
                             <input type="text" value={record.otherIngredients} onChange={(e) => handleRecordChange(record.id, 'otherIngredients', toTitleCase(e.target.value))} 
-                                   className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl text-sm text-gray-600 focus:bg-white focus:border-[#D4AF37] focus:ring-4 focus:ring-[#D4AF37]/10 outline-none transition-all placeholder:text-gray-300" placeholder="Bahan tambahan..." />
+                                   className="w-full px-3 py-2.5 md:px-4 md:py-3 bg-gray-50/50 border border-gray-200 rounded-lg md:rounded-xl text-xs md:text-sm text-gray-600 focus:bg-white focus:border-[#D4AF37] focus:ring-4 focus:ring-[#D4AF37]/10 outline-none transition-all placeholder:text-gray-300" placeholder="Bahan tambahan..." />
                        </div>
 
-                       <div className="pt-4 border-t border-dashed border-gray-200 grid grid-cols-2 gap-5">
+                       <div className="pt-4 border-t border-dashed border-gray-200 grid grid-cols-2 gap-3 md:gap-5">
                            <div className="space-y-1.5">
-                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1.5"><Globe size={12}/> Produk Asal</label>
+                                <label className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1.5"><Globe size={12}/> Produk Asal</label>
                                 <input type="text" value={record.originProduct} onChange={(e) => handleRecordChange(record.id, 'originProduct', toTitleCase(e.target.value))} 
                                        className="w-full px-3 py-2.5 bg-gray-50/50 border border-gray-200 rounded-lg text-xs font-medium text-gray-600 focus:bg-white focus:border-gray-400 outline-none transition-all" placeholder="Merk / Negara" />
                            </div>
                            <div className="space-y-1.5">
-                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1.5"><DollarSign size={12}/> Harga (Asal)</label>
+                                <label className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-wider flex items-center gap-1.5"><DollarSign size={12}/> Harga (Asal)</label>
                                 <input type="number" value={record.productPrice} onChange={(e) => handleRecordChange(record.id, 'productPrice', e.target.value)} 
                                        className="w-full px-3 py-2.5 bg-gray-50/50 border border-gray-200 rounded-lg text-xs font-medium text-gray-600 focus:bg-white focus:border-gray-400 outline-none transition-all" placeholder="0" />
                            </div>
@@ -315,7 +315,7 @@ export const SpiceForm: React.FC<SpiceFormProps> = ({ onBack }) => {
                    <textarea 
                       value={otherReason}
                       onChange={(e) => setOtherReason(e.target.value)}
-                      className="w-full h-32 bg-white/80 border border-gray-200 rounded-2xl p-5 text-sm font-medium text-gray-700 focus:border-[#064E3B] focus:ring-4 focus:ring-[#064E3B]/5 outline-none resize-none shadow-inner transition-all hover:bg-white"
+                      className="w-full h-32 bg-white/80 border border-gray-200 rounded-xl md:rounded-2xl p-4 md:p-5 text-xs md:text-sm font-medium text-gray-700 focus:border-[#064E3B] focus:ring-4 focus:ring-[#064E3B]/5 outline-none resize-none shadow-inner transition-all hover:bg-white"
                       placeholder="Jelaskan alasan jika ada bumbu non-standar yang digunakan..."
                    ></textarea>
                </div>

@@ -129,12 +129,12 @@ export const TenantForm: React.FC<TenantFormProps> = ({ onBack }) => {
             </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 pb-10">
             {tenantData.map((record, idx) => (
-                <div key={record.id} className="relative bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
-                   <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#D4AF37] rounded-l-3xl"></div>
+                <div key={record.id} className="relative bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
+                   <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#D4AF37] rounded-l-2xl md:rounded-l-3xl"></div>
                    <button onClick={() => removeRecord(record.id)} className="absolute top-4 right-4 text-gray-300 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all bg-red-50 p-2 rounded-lg"><Trash2 size={16} /></button>
-                   <div className="flex items-center gap-3 mb-6 pl-2">
+                   <div className="flex items-center gap-3 mb-4 md:mb-6 pl-2">
                        <span className="text-xs font-bold text-[#1E3A8A] bg-[#1E3A8A]/10 px-2.5 py-1.5 rounded-lg">Tenant #{idx + 1}</span>
                    </div>
                    <div className="space-y-4">
@@ -147,8 +147,8 @@ export const TenantForm: React.FC<TenantFormProps> = ({ onBack }) => {
                    </div>
                 </div>
             ))}
-            <button onClick={addRecord} className="flex flex-col items-center justify-center min-h-[200px] border-2 border-dashed border-gray-200 rounded-3xl hover:bg-[#1E3A8A]/5 transition-all text-gray-400 font-bold gap-3 group">
-                <div className="w-14 h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 shadow-sm group-hover:scale-110 transition-transform"><Plus size={24} /></div>
+            <button onClick={addRecord} className="flex flex-col items-center justify-center min-h-[120px] md:min-h-[200px] border-2 border-dashed border-gray-200 rounded-2xl md:rounded-3xl hover:bg-[#1E3A8A]/5 transition-all text-gray-400 font-bold gap-2 md:gap-3 group text-xs md:text-base">
+                <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 shadow-sm group-hover:scale-110 transition-transform"><Plus size={20} className="md:w-6 md:h-6" /></div>
                 Tambah Tenant Baru
             </button>
         </div>

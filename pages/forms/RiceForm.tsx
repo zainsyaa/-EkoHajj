@@ -129,15 +129,15 @@ export const RiceForm: React.FC<RiceFormProps> = ({ onBack }) => {
             </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 pb-10">
           {riceData.map((record, idx) => (
-            <div key={record.id} className="relative bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
-              <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#D4AF37] rounded-l-3xl"></div>
+            <div key={record.id} className="relative bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 border border-gray-100 shadow-sm hover:shadow-xl transition-all group">
+              <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#D4AF37] rounded-l-2xl md:rounded-l-3xl"></div>
               <button onClick={() => removeRecord(record.id)} className="absolute top-4 right-4 text-gray-300 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all bg-red-50 p-2 rounded-lg z-10"><Trash2 size={16} /></button>
               
-              <div className="flex justify-between items-center mb-6 pl-2">
+              <div className="flex justify-between items-center mb-4 md:mb-6 pl-2">
                 <span className="text-xs font-bold text-[#059669] bg-[#059669]/10 px-2.5 py-1.5 rounded-lg">Beras #{idx + 1}</span>
-                <div className="mr-8"><Toggle checked={record.isUsed} onChange={(v) => handleRecordChange(record.id, 'isUsed', v)} label="Tersedia" /></div>
+                <div className="mr-4 md:mr-8"><Toggle checked={record.isUsed} onChange={(v) => handleRecordChange(record.id, 'isUsed', v)} label="Tersedia" /></div>
               </div>
               
               <div className="space-y-4">
@@ -160,8 +160,8 @@ export const RiceForm: React.FC<RiceFormProps> = ({ onBack }) => {
               </div>
             </div>
           ))}
-          <button onClick={addRecord} className="flex flex-col items-center justify-center min-h-[250px] border-2 border-dashed border-gray-300 rounded-3xl hover:bg-[#059669]/5 hover:border-[#059669]/30 transition-all text-gray-400 font-bold text-sm gap-2">
-             <div className="w-12 h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 shadow-sm"><Plus size={20} /></div>
+          <button onClick={addRecord} className="flex flex-col items-center justify-center min-h-[120px] md:min-h-[250px] border-2 border-dashed border-gray-300 rounded-2xl md:rounded-3xl hover:bg-[#059669]/5 hover:border-[#059669]/30 transition-all text-gray-400 font-bold text-xs md:text-sm gap-2">
+             <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-400 shadow-sm"><Plus size={20} /></div>
              + Tambah Record Beras
           </button>
         </div>

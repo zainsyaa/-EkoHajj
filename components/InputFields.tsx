@@ -9,7 +9,7 @@ export const Input: React.FC<InputProps> = ({ label, className = '', ...props })
     {label && <label className="text-[11px] font-bold text-gray-500 ml-1 uppercase tracking-widest group-focus-within:text-[#064E3B] transition-colors duration-300">{label}</label>}
     <div className="relative group/input">
         <input
-        className={`w-full bg-white/50 backdrop-blur-sm border border-gray-200 rounded-xl px-4 py-3.5 text-gray-800 placeholder-gray-400 text-sm font-medium
+        className={`w-full bg-white/50 backdrop-blur-sm border border-gray-200 rounded-xl px-3 py-2.5 md:px-4 md:py-3.5 text-gray-800 placeholder-gray-400 text-sm font-medium
             focus:outline-none focus:border-[#064E3B] focus:bg-white focus:ring-4 focus:ring-[#064E3B]/10 transition-all duration-300 shadow-sm 
             hover:border-[#064E3B]/30 hover:bg-white/80 hover:shadow-md
             disabled:opacity-60 disabled:cursor-not-allowed disabled:bg-gray-100
@@ -46,7 +46,7 @@ export const Select: React.FC<SelectProps> = ({ label, options, className = '', 
     {label && <label className="text-[11px] font-bold text-gray-500 ml-1 uppercase tracking-widest group-focus-within:text-[#064E3B] transition-colors duration-300">{label}</label>}
     <div className="relative">
         <select
-        className={`w-full bg-white/50 backdrop-blur-sm border border-gray-200 rounded-xl px-4 py-3.5 text-gray-800 text-sm font-medium
+        className={`w-full bg-white/50 backdrop-blur-sm border border-gray-200 rounded-xl px-3 py-2.5 md:px-4 md:py-3.5 text-gray-800 text-sm font-medium
             focus:outline-none focus:border-[#064E3B] focus:bg-white focus:ring-4 focus:ring-[#064E3B]/10 transition-all duration-300 appearance-none shadow-sm 
             hover:bg-white/80 hover:border-[#064E3B]/30 hover:shadow-md cursor-pointer
             ${className}`}
