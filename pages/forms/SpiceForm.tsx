@@ -305,17 +305,17 @@ export const SpiceForm: React.FC<SpiceFormProps> = ({ onBack }) => {
               ))}
           </div>
 
-          <div className="relative group overflow-hidden rounded-3xl border border-white/60 shadow-xl bg-white/60 backdrop-blur-xl mb-8">
+          <div className="relative group overflow-hidden rounded-2xl md:rounded-3xl border border-white/60 shadow-xl bg-white/60 backdrop-blur-xl mb-8">
                <div className="absolute top-0 left-0 w-1.5 h-full bg-[#D4AF37]"></div>
-               <div className="p-8">
-                   <div className="flex items-center gap-3 mb-4">
-                       <div className="p-2 bg-[#D4AF37]/10 rounded-lg border border-[#D4AF37]/20"><AlertCircle size={20} className="text-[#D4AF37]" /></div>
-                       <h3 className="text-base font-bold text-gray-800 uppercase tracking-wide">C. Alasan Memilih Bumbu Lain ({activeTab})</h3>
+               <div className="p-4 md:p-8">
+                   <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                       <div className="p-1.5 md:p-2 bg-[#D4AF37]/10 rounded-lg border border-[#D4AF37]/20"><AlertCircle size={16} className="text-[#D4AF37] md:w-5 md:h-5" /></div>
+                       <h3 className="text-xs md:text-base font-bold text-gray-800 uppercase tracking-wide">C. Alasan Memilih Bumbu Lain ({activeTab})</h3>
                    </div>
                    <textarea 
                       value={otherReason}
                       onChange={(e) => setOtherReason(e.target.value)}
-                      className="w-full h-32 bg-white/80 border border-gray-200 rounded-xl md:rounded-2xl p-4 md:p-5 text-xs md:text-sm font-medium text-gray-700 focus:border-[#064E3B] focus:ring-4 focus:ring-[#064E3B]/5 outline-none resize-none shadow-inner transition-all hover:bg-white"
+                      className="w-full h-24 md:h-32 bg-white/80 border border-gray-200 rounded-xl md:rounded-2xl p-3 md:p-5 text-xs md:text-sm font-medium text-gray-700 focus:border-[#064E3B] focus:ring-4 focus:ring-[#064E3B]/5 outline-none resize-none shadow-inner transition-all hover:bg-white"
                       placeholder="Jelaskan alasan jika ada bumbu non-standar yang digunakan..."
                    ></textarea>
                </div>
@@ -323,7 +323,7 @@ export const SpiceForm: React.FC<SpiceFormProps> = ({ onBack }) => {
       </div>
       {/* FLOATING ACTION BAR */}
       {createPortal(
-        <div className="fixed bottom-4 md:bottom-6 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:min-w-[400px] z-20 bg-white/90 backdrop-blur-xl border border-gray-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-full p-1.5 md:p-2 flex items-center justify-between md:justify-center gap-2 md:gap-4 transition-all duration-300 animate-in fade-in slide-in-from-bottom-4">
+        <div className="fixed bottom-6 md:bottom-8 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:min-w-[400px] z-20 bg-white/90 backdrop-blur-xl border border-gray-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-full p-1.5 md:p-2 flex items-center justify-between md:justify-center gap-2 md:gap-4 transition-all duration-300 animate-in fade-in slide-in-from-bottom-4">
             <button 
                 onClick={handleReset}
                 className="group flex items-center justify-center gap-2 px-3 py-2.5 md:px-4 md:py-3 rounded-full text-[10px] md:text-sm font-bold text-red-600 bg-red-50/50 border border-red-100 hover:bg-red-100 transition-all duration-300 shadow-sm hover:shadow-md active:scale-95 flex-1 md:flex-none"

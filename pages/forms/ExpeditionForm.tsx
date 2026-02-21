@@ -154,12 +154,15 @@ export const ExpeditionForm: React.FC<ExpeditionFormProps> = ({ onBack }) => {
             </button>
         </div>
 
-        <div className="bg-white/40 backdrop-blur-xl border border-white/60 rounded-3xl p-8 shadow-sm flex items-center justify-between mb-8">
-            <div className="flex items-center gap-5">
-                 <div className="p-4 bg-[#D4AF37]/10 rounded-2xl text-[#D4AF37]"><Calculator size={28} /></div>
-                 <div><h3 className="text-lg font-bold text-gray-800">Rata-rata Pendapatan Perhari</h3><p className="text-xs text-gray-500 font-medium">Kalkulasi otomatis input kargo harian</p></div>
+        <div className="bg-white/40 backdrop-blur-xl border border-white/60 rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-0 mb-8">
+            <div className="flex items-center gap-3 md:gap-5">
+                 <div className="p-2.5 md:p-4 bg-[#D4AF37]/10 rounded-xl md:rounded-2xl text-[#D4AF37]"><Calculator size={20} className="md:w-7 md:h-7" /></div>
+                 <div>
+                     <h3 className="text-sm md:text-lg font-bold text-gray-800">Rata-rata Pendapatan Perhari</h3>
+                     <p className="text-[10px] md:text-xs text-gray-500 font-medium">Kalkulasi otomatis input kargo harian</p>
+                 </div>
             </div>
-            <div className="text-4xl font-bold text-[#D4AF37] font-playfair">SAR {averageIncome.toLocaleString()}</div>
+            <div className="text-2xl md:text-4xl font-bold text-[#D4AF37] font-playfair self-end md:self-auto">SAR {averageIncome.toLocaleString()}</div>
         </div>
       </div>
       {/* FLOATING ACTION BAR */}
