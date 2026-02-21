@@ -168,7 +168,7 @@ export const RiceForm: React.FC<RiceFormProps> = ({ onBack }) => {
       </div>
       {/* FLOATING ACTION BAR */}
       {createPortal(
-        <div className="fixed bottom-6 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:min-w-[400px] z-[9999] bg-white/90 backdrop-blur-xl border border-gray-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-full p-2 flex items-center justify-between md:justify-center gap-2 md:gap-4 transition-all duration-300 animate-in fade-in slide-in-from-bottom-4">
+        <div className="fixed bottom-6 left-4 right-4 md:left-1/2 md:right-auto md:-translate-x-1/2 md:min-w-[400px] z-20 bg-white/90 backdrop-blur-xl border border-gray-200/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-full p-2 flex items-center justify-between md:justify-center gap-2 md:gap-4 transition-all duration-300 animate-in fade-in slide-in-from-bottom-4">
             <button 
                 onClick={handleReset}
                 className="group flex items-center justify-center gap-2 px-4 py-3 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-bold text-red-600 bg-red-50/50 border border-red-100 hover:bg-red-100 transition-all duration-300 shadow-sm hover:shadow-md active:scale-95 flex-1 md:flex-none"

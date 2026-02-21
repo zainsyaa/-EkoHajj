@@ -77,7 +77,7 @@ export const DataEntryPortal: React.FC<DataEntryPortalProps> = ({ onNavigate, st
     }, [searchTerm, bumbuMakkah, bumbuMadinah, rteData, tenantData, expeditionData, telecomData, riceData]);
 
     return (
-        <div className="space-y-6 pb-10 animate-fade-in-up font-sans">
+        <div className="space-y-4 md:space-y-6 pb-20 md:pb-10 animate-fade-in-up font-sans">
             
             <HeroSection
                 title={<span>Pusat Input Data <span className="text-[#D4AF37]">Monitoring</span></span>}
@@ -85,6 +85,7 @@ export const DataEntryPortal: React.FC<DataEntryPortalProps> = ({ onNavigate, st
                 currentDate={currentDate}
                 statusFilter={statusFilter}
                 onStatusFilterChange={onStatusFilterChange}
+                className="mx-4 md:mx-0"
             >
                 <div className="flex flex-row items-center gap-2 w-full sm:w-auto">
                     {/* Search Bar - Height matched to Badge */}

@@ -24,7 +24,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate, onLog
 
   return (
     <aside className={`fixed left-0 top-0 h-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] z-30 
-       ${isOpen ? 'translate-x-0 w-72' : '-translate-x-full md:translate-x-0 md:w-24'} 
+       ${isOpen ? 'translate-x-0 w-64 md:w-72' : '-translate-x-full md:translate-x-0 md:w-24'} 
        bg-[#064E3B] shadow-[10px_0_30px_rgba(0,0,0,0.15)] border-r border-white/5 flex flex-col overflow-hidden will-change-[width,transform]`}>
        
       {/* Decorative Background Pattern */}
@@ -32,13 +32,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate, onLog
       <div className="absolute top-0 right-0 w-64 h-64 bg-[#10B981] opacity-20 blur-[100px] rounded-full pointer-events-none"></div>
 
       {/* Brand Header */}
-      <div className="h-24 flex items-center justify-start px-6 border-b border-white/10 relative z-10 bg-gradient-to-b from-[#064E3B] to-transparent overflow-hidden whitespace-nowrap">
+      <div className="h-20 md:h-24 flex items-center justify-start px-6 border-b border-white/10 relative z-10 bg-gradient-to-b from-[#064E3B] to-transparent overflow-hidden whitespace-nowrap">
          <div className={`flex items-center gap-4 transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${!isOpen ? 'translate-x-1' : ''}`}>
             {/* Logo */}
-            <div className="relative w-12 h-12 flex-shrink-0 flex items-center justify-center group cursor-default">
+            <div className="relative w-10 h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center group cursor-default">
                 <div className="absolute inset-0 bg-[#D4AF37] rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
                 <div className="relative w-full h-full bg-gradient-to-br from-[#D4AF37] to-[#B4941F] rounded-xl flex items-center justify-center text-[#064E3B] shadow-xl border border-white/20 transform group-hover:scale-105 transition-transform duration-500">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-6 h-6 drop-shadow-sm">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-5 h-5 md:w-6 md:h-6 drop-shadow-sm">
                         <path d="M3 21h18M5 21V7l8-4 8 4v14" />
                     </svg>
                 </div>
@@ -46,13 +46,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate, onLog
             
             {/* Title */}
             <div className={`leading-tight transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10 absolute left-20 pointer-events-none'}`}>
-                <h1 className="font-bold text-xl tracking-tight text-white drop-shadow-md font-playfair">EkoHajj <span className="text-[#D4AF37]">2026</span></h1>
-                <span className="text-[9px] text-white/60 tracking-[0.2em] uppercase font-semibold block mt-0.5">System Dashboard</span>
+                <h1 className="font-bold text-lg md:text-xl tracking-tight text-white drop-shadow-md font-playfair">EkoHajj <span className="text-[#D4AF37]">2026</span></h1>
+                <span className="text-[8px] md:text-[9px] text-white/60 tracking-[0.2em] uppercase font-semibold block mt-0.5">System Dashboard</span>
             </div>
          </div>
       </div>
 
-      <nav className="flex-1 overflow-y-auto custom-scrollbar py-8 px-4 space-y-2 relative z-10 overflow-x-hidden">
+      <nav className="flex-1 overflow-y-auto custom-scrollbar py-6 md:py-8 px-3 md:px-4 space-y-2 relative z-10 overflow-x-hidden">
         {/* Beranda */}
         <MenuItem 
             icon={LayoutDashboard} 
@@ -103,7 +103,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate, onLog
       <div className="p-4 border-t border-white/5 bg-[#042f24] relative z-10">
         <button
             onClick={onLogout}
-            className={`w-full flex items-center ${isOpen ? 'gap-3.5' : ''} p-3.5 rounded-xl text-red-300/80 hover:bg-red-500/10 hover:text-red-200 transition-all duration-300 group border border-transparent hover:border-red-500/20 overflow-hidden whitespace-nowrap ${!isOpen && 'justify-center'}`}
+            className={`w-full flex items-center ${isOpen ? 'gap-3 md:gap-3.5' : ''} p-3 md:p-3.5 rounded-xl text-red-300/80 hover:bg-red-500/10 hover:text-red-200 transition-all duration-300 group border border-transparent hover:border-red-500/20 overflow-hidden whitespace-nowrap ${!isOpen && 'justify-center'}`}
         >
             <div className="relative flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
                 <LogOut size={20} strokeWidth={2} />
@@ -120,7 +120,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentPage, onNavigate, onLog
 const MenuItem = ({ icon: Icon, label, isActive, onClick, isOpen }: any) => (
     <button
         onClick={onClick}
-        className={`w-full flex items-center ${isOpen ? 'gap-3.5' : ''} p-3.5 rounded-2xl transition-all duration-300 relative overflow-hidden group whitespace-nowrap active:scale-95
+        className={`w-full flex items-center ${isOpen ? 'gap-3 md:gap-3.5' : ''} p-3 md:p-3.5 rounded-2xl transition-all duration-300 relative overflow-hidden group whitespace-nowrap active:scale-95
             ${isActive 
                 ? 'bg-gradient-to-r from-[#ffffff]/10 to-transparent text-white border border-white/10 shadow-lg' 
                 : 'text-gray-400 hover:bg-white/5 hover:text-white border border-transparent hover:shadow-md'
