@@ -349,8 +349,8 @@ export const Visualization: React.FC = () => {
                                                 data={dataTelcoShare} 
                                                 cx="50%" 
                                                 cy="50%" 
-                                                innerRadius={60} 
-                                                outerRadius={80} 
+                                                innerRadius={80} 
+                                                outerRadius={100} 
                                                 paddingAngle={4} 
                                                 dataKey="value"
                                                 cornerRadius={4}
@@ -427,8 +427,8 @@ export const Visualization: React.FC = () => {
                                     <Tooltip cursor={{fill: '#F3F4F6'}} content={<CustomTooltip unit="SAR" />} />
                                     <Legend iconType="circle" wrapperStyle={{fontSize: '12px', paddingTop: '10px'}} />
                                     
-                                    <Bar dataKey="price" name="Harga Jual" fill="url(#gradRicePrice)" radius={[0, 4, 4, 0]} barSize={16} />
-                                    <Bar dataKey="origin" name="Harga Asal" fill="url(#gradRiceOrigin)" radius={[0, 4, 4, 0]} barSize={16} />
+                                    <Bar dataKey="price" name="Harga Jual" fill="url(#gradRicePrice)" radius={[0, 4, 4, 0]} barSize={24} />
+                                    <Bar dataKey="origin" name="Harga Asal" fill="url(#gradRiceOrigin)" radius={[0, 4, 4, 0]} barSize={24} />
                                     
                                     <ReferenceLine x={avgRicePrice} stroke="#EF4444" strokeDasharray="3 3" label={{ position: 'top', value: 'Rata-rata', fill: '#EF4444', fontSize: 10 }} />
                                 </BarChart>
@@ -447,7 +447,7 @@ export const Visualization: React.FC = () => {
                     <div className="h-[350px] md:h-[400px] mt-6">
                         {isLoading ? <PieSkeleton /> : (
                             <ResponsiveContainer width="100%" height="100%">
-                                <RadarChart cx="50%" cy="50%" outerRadius="60%" data={dataHotelRevenue}>
+                                <RadarChart cx="50%" cy="50%" outerRadius="85%" data={dataHotelRevenue}>
                                     <defs>
                                         <radialGradient id="gradRadarRevenue" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
                                             <stop offset="0%" stopColor={COLORS.secondary} stopOpacity={0.1}/>
@@ -457,9 +457,9 @@ export const Visualization: React.FC = () => {
                                     <PolarGrid stroke="#E5E7EB" strokeDasharray="4 4" />
                                     <PolarAngleAxis 
                                         dataKey="subject" 
-                                        fontSize={10} 
+                                        fontSize={12} 
                                         tick={{ fill: '#4B5563', fontWeight: 'bold' }} 
-                                        tickFormatter={(val) => val.length > 12 ? `${val.substring(0, 12)}...` : val}
+                                        tickFormatter={(val) => val.length > 20 ? `${val.substring(0, 20)}...` : val}
                                     />
                                     <PolarRadiusAxis angle={30} stroke="none" />
                                     
